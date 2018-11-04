@@ -1,0 +1,179 @@
+
+.main {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #f5f5f5 no-repeat center;
+  background-attachment: fixed;
+  position: relative;
+  box-sizing: border-box;
+  padding-bottom: 40px;
+  //图标
+  .mydiv {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    display: block;
+    z-index: 3;
+    .windows {
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      display: block;
+      margin: 5px;
+    }
+  }
+  //应用层
+  .app-ceng{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    padding-bottom: 5px;
+  }
+  .app-list{
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  //开始
+
+  .win-down{
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    height: 40px;
+    border-top: 1px solid #000000;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+  }
+  .win-down .win-down-bg{
+    content: '';
+    position: absolute;
+    top: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position:center;
+    background-attachment: fixed;
+    -webkit-filter: blur(5px);
+    -moz-filter: blur(5px);
+    -ms-filter: blur(5px);
+    -o-filter: blur(5px);
+    filter: blur(5px);
+
+    padding: 20px;
+    margin: -20px;
+  }
+  .win-down>i{
+    position: absolute;
+    top: 0px;
+    display: block;
+    width: 100%;
+    height: 1px;
+    background: rgba(255,255,255,.6);
+  }
+  .win-down-body{
+    position: absolute;
+    top: 1px;
+    width: 100%;
+    height: 40px;
+    background: rgba(0,0,0,.15);
+  }
+  .win-start{
+    width: 60px;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top:0;
+    cursor: pointer;
+  }
+  .win-start-icon{
+    width: 28px;
+    overflow: hidden;
+    margin: 6px auto;
+    /*transform: perspective(30px) rotateX(0deg) rotateY(-16deg) scale(0.9);*/
+    /*-webkit-transform: perspective(30px) rotateX(0deg) rotateY(-16deg) scale(0.9);*/
+  }
+  .win-start-icon i {
+    display: block;
+    float: left;
+    width: 12px;
+    height: 12px;
+    margin-bottom: 1px;
+    background: #fff;
+    transition: 0.2s background-color;
+  }
+  .win-start-icon i:nth-of-type(odd){
+    margin-right: 1px;
+    clear: left;
+  }
+  .win-start:hover{
+    background-color: rgba(255,255,255,.4);
+  }
+  .win-start:hover .win-start-icon{
+    box-shadow: 0px 0px 0px #fff;
+  }
+  .win-start:hover i:nth-of-type(1){
+    background-color: #F36422 !important;
+  }
+  .win-start:hover i:nth-of-type(2){
+    background-color: #8DC53E !important;
+  }
+  .win-start:hover i:nth-of-type(3){
+    background-color: #00ADEF !important;
+  }
+  .win-start:hover i:nth-of-type(4){
+    background-color: #FFC30D !important;
+  }
+  .win-datetime{
+    position: absolute;
+    box-sizing: border-box;
+    width: 100px;
+    height: 100%;
+    right: 0;
+    top:0;
+  }
+  .win-datetime:before{
+    content: '';
+    display: block;
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    padding: 20px;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,.2);
+    -webkit-filter: blur(15px);
+    -moz-filter: blur(15px);
+    -ms-filter: blur(15px);
+    -o-filter: blur(15px);
+    filter: blur(15px);
+  }
+  .win-datetime>p{
+    position: relative;
+    width: 100%;
+    height:20px;
+    margin: 0;
+    text-align: center;
+    color: white;
+    line-height: 16px;
+    font-size: 12px;
+    font-family: "微软雅黑";
+  }
+}
+
+.win-task{
+  position: relative;
+  box-sizing: border-box;
+  padding-left: 60px;
+  padding-right: 100px;
+  width: 100%;
+  height: 100%;
+  padding-bottom: 1px;
+}

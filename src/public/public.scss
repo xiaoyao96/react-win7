@@ -1,0 +1,23 @@
+* {
+  -webkit-tap-highlight-color: transparent;
+  font-family: "黑体";
+  user-select: none;
+}
+
+a,
+a:visited {
+  text-decoration: none;
+}
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
