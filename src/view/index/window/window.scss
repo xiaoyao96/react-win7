@@ -12,7 +12,9 @@
   border: 1px solid white;
   border-radius: 3px;
 }
-
+.my_win.current .win-head{
+  background-color: #A8C7F0;
+}
 .my_win .win-head {
   z-index: 1;
   position: relative;
