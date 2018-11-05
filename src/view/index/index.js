@@ -12,29 +12,61 @@ export default class Index extends React.Component{
         super(props);
         this.state = {
             appList,
-            willMax: false
+            willMax: false,
+            runList: []
         }
     }
     //打开应用
-    openWindow(appId){
-        let target = this.state.appList.find(app => app.appId == appId);
-        if(target.isRuning){
+    openWindow(id){
+        let target = this.state.runList.find(app => app.appId === id);
+        if(target){
+            this.winHideCtrl(id, false);
+            this.focusWindow(id);
             return;
         }
-        target.isRuning = true;
+        let newApp = JSON.parse(JSON.stringify(this.state.appList.find(app => app.appId === id)))
+        this.state.runList.forEach(app => {app.focus = false});
+        newApp.zIndex = this.state.runList.length + 1;
+        newApp.focus = true;
+        this.state.runList.push(newApp);
         this.setState({
-            appList
+            runList: this.state.runList
         })
     }
     //关闭应用
-    closeWindow(appId){
-        let target = this.state.appList.find(app => app.appId == appId);
-        if(!target.isRuning){
+    closeWindow(id){
+        let target = this.state.runList.find(app => app.appId === id);
+        if(!target){
             return;
         }
-        target.isRuning = false;
+        let closeAppIndex = this.state.runList.findIndex(app => app.appId === id);
+        this.state.runList.splice(closeAppIndex,1);
+        let nextCurrent = this.state.runList.find(app => app.zIndex === target.zIndex - 1)
+        nextCurrent && (nextCurrent.focus = true);
         this.setState({
-            appList
+            runList: this.state.runList
+        })
+    }
+    //应用获取焦点
+    focusWindow(id){
+        let target = this.state.runList.find(app => app.appId === id);
+        if(!target){
+            return;
+        }
+        let focusApp = target;
+
+        this.state.runList.filter(app => {
+            app.focus = false;
+            return app.zIndex > focusApp.zIndex
+        }).forEach(app => {
+            if(app.appId != focusApp.appId){
+                app.zIndex--;
+            }
+        })
+        focusApp.focus = true;
+        focusApp.zIndex = this.state.runList.length;
+        this.setState({
+            runList: this.state.runList
         })
     }
     //展示将全屏
@@ -49,26 +81,24 @@ export default class Index extends React.Component{
     }
     //隐藏或显示某窗口
     winHideCtrl(appId, value){
-        let target = this.state.appList.find(app => app.appId == appId);
-
+        let target = this.state.runList.find(app => app.appId === appId);
         let result = !target.hide;
         if (typeof value !== 'undefined'){
             result = value;
         }
         target.hide = result;
-        console.log(this.state.appList)
         this.setState({
-            appList
+            runList: this.state.runList
         })
     }
     render(){
         let links = this.state.appList.map(app => (
             <Link openWindow={this.openWindow.bind(this)} key={app.appId} appItem={app} />
         ))
-        let running = this.state.appList.filter(app => app.isRuning);
+        let running = this.state.runList;
 
         let runningWindow = running.map(app => (
-            <Window winHideCtrl={this.winHideCtrl.bind(this)} hide={app.hide} willMax={this.state.willMax} WillMaxCtrl={this.WillMaxCtrl.bind(this)} closeWindow={this.closeWindow.bind(this)} key={app.appId} appItem={app} />
+            <Window focusWindow={this.focusWindow.bind(this)} winHideCtrl={this.winHideCtrl.bind(this)} willMax={this.state.willMax} WillMaxCtrl={this.WillMaxCtrl.bind(this)} closeWindow={this.closeWindow.bind(this)} key={app.appId} appItem={app} />
         ))
         let runningFooter = running.map(app => (
             <FooterIcon winHideCtrl={this.winHideCtrl.bind(this)} key={app.appId} appItem={app}  />

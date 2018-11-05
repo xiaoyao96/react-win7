@@ -12,6 +12,7 @@ export default class Window extends React.Component {
         this.windowMoving = this.windowMoving.bind(this)
         this.clickMax = this.clickMax.bind(this)
         this.hiddenHandler = this.hiddenHandler.bind(this)
+        this.focusWindow = this.focusWindow.bind(this)
         this.state = {
             max: false,
             position: {
@@ -21,8 +22,7 @@ export default class Window extends React.Component {
             size: {
                 w: 600,
                 h: 400
-            },
-            hide: false
+            }
         }
         this.customState = {}
     }
@@ -119,13 +119,15 @@ export default class Window extends React.Component {
     closeWindow() {
         this.props.closeWindow(this.props.appItem.appId)
     }
-
+    focusWindow(){
+        this.props.focusWindow(this.props.appItem.appId)
+    }
     render() {
         let style = {transform: `translate3d(${this.state.position.x}px,${this.state.position.y}px,0)`, width: `${this.state.size.w}px`, height: `${this.state.size.h}px`}
-        style.display = this.props.hide ? "none" : "block";
+        style.display = this.props.appItem.hide ? "none" : "block";
+        style.zIndex = this.props.appItem.zIndex;
         return (
-            <div style={style}
-                 className={classnames({my_win: true, max: this.state.max, current: true})}>
+            <div onMouseDown={this.focusWindow} style={style} className={classnames({my_win: true, max: this.state.max, current: this.props.appItem.focus})}>
                 <div onDoubleClick={this.maxWin} onClick={this.windowEndMove} onMouseDown={this.windowStartMove}
                      className="win-head">
                     <span style={{backgroundImage: `url(${this.props.appItem.img})`}}>{this.props.appItem.name}</span>

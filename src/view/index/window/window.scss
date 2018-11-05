@@ -11,6 +11,7 @@
   box-shadow: 1px 1px 5px #000000;
   border: 1px solid white;
   border-radius: 3px;
+  pointer-events: auto;
 }
 .my_win.current .win-head{
   background-color: #A8C7F0;
