@@ -1,17 +1,36 @@
-import diterIcon from '../imgs/text_edit.png'
+import text_edit from '../imgs/text_edit.png'
 import recycle from '../imgs/recycle.png'
-export default [
+import github from '../imgs/github.png'
+import Mygit from '../myApp/mygit/mygit'
+const Applist = [
     {
         "appId":"2",
         "name" : "笔记本",
-        "type" : "",
-        "content" : "本项目主要是业余时间写着玩的，主要是模拟windows 7的桌面，实现了一部分功能，打开应用，批量选择，右键刷新，窗口放大缩小，拖拽顶部放大...还有很多细节功能。",
-        "img" : diterIcon
+        "type" : "txt",
+        "content" : "本项目React重构的windows 7桌面系统。许多细节等你发现",
+        "img" : text_edit
     },
     {
         "appId":"1",
+        "type" : "txt",
         "name": "回收站",
         "content": "开发中..",
         "img" : recycle
+    },
+    {
+        "appId":"3",
+        "name": "wxMiniStore",
+        "type" : "html",
+        "url": "https://blog.csdn.net/qq_35173602/article/details/82349742",
+        "img" : github
+    },
+    {
+        "appId":"4",
+        "name": "我的git",
+        "type" : "component",
+        "component": Mygit,
+        "img" : github
     }
 ]
+
+export default Applist.map(app => Object.freeze(app))

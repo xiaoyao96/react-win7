@@ -1,10 +1,7 @@
 
 .my_win {
-  display: block;
-  width: 600px;
-  background: #f0f0f0;
-  height: 400px;
   position: absolute;
+  background: #fff;
   top: 0;
   left: 0;
   z-index: 8;
@@ -12,6 +9,9 @@
   border: 1px solid white;
   border-radius: 3px;
   pointer-events: auto;
+  display: flex;
+  flex-direction: column;
+  animation: windowShow .2s;
 }
 .my_win.current .win-head{
   background-color: #A8C7F0;
@@ -27,8 +27,8 @@
 }
 
 .my_win .win-head > span {
-
-  background-size: auto 100%;
+  background-position: left center;
+  background-size: auto 80%;
   background-repeat: no-repeat;
   float: left;
   display: block;
@@ -65,18 +65,17 @@
 
 .win-body {
   width: 100%;
-  height: 100%;
+  flex: 1;
   box-sizing: border-box;
-  position: absolute;
   top: 0px;
   left: 0px;
-  padding: 30px 10px 0px 10px;
   border-bottom-right-radius: 3px;
   border-bottom-left-radius: 3px;
-  overflow: auto;
-  margin: 1px 2px 2px 2px;
+  overflow: hidden;
 }
-
+.win-body> p{
+  padding: 0 10px;
+}
 .win-down {
   overflow: hidden;
   position: fixed;
@@ -112,15 +111,17 @@
 .max {
   width: 100% !important;
   height: 100% !important;
-  transform: translate(-1px,-1px) !important;
+  left: -1px !important;
+  top: -1px !important;
 }
 
-.premax {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  padding: 10px;
-  box-sizing: border-box;
-  background: rgba(255, 255, 255, .4) no-repeat content-box;
-  background-size: 100% 100%;
+@keyframes windowShow {
+  from{
+    opacity: .3;
+    transform: scale(.3);
+  }
+  to{
+    opacity: 1;
+    transform: scale(1);
+  }
 }

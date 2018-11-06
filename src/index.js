@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Router from './router/router';
 import * as serviceWorker from './serviceWorker';
-import './public/public.scss'
+import './public/public.scss';
 ReactDOM.render(
     <Router />
     , document.getElementById('root'));
