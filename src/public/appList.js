@@ -30,6 +30,14 @@ const Applist = [
         "type" : "component",
         "component": Mygit,
         "img" : github
+    },
+    {
+        "appId":"5",
+        "name": "我的电脑",
+        "type" : "component",
+        "component": Mygit,
+        "imgType": "font",
+        "img" : "icon-icon-test1"
     }
 ]
 

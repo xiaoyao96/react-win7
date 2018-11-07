@@ -129,12 +129,15 @@ export default class Window extends React.Component {
     }
     render() {
         //样式控制
-        let winStyle = { transform: `translate(${this.state.position.x}px, ${this.state.position.y}px)`,width: `${this.state.size.w}px`, height: `${this.state.size.h}px`}
+        // let winStyle = { transform: `translate(${this.state.position.x}px, ${this.state.position.y}px)`,width: `${this.state.size.w}px`, height: `${this.state.size.h}px`}
+        let winStyle = { left: `${this.state.position.x}px`, top: `${this.state.position.y}px` ,width: `${this.state.size.w}px`, height: `${this.state.size.h}px`}
+
         winStyle.display = this.props.appItem.hide ? "none" : "flex";
         winStyle.zIndex = this.props.appItem.zIndex;
-        let bodyStyle = {
-            pointerEvents: this.props.moving ? "none" : "auto"
+        let maskStyle = {
+            display: this.props.moving ? "block" : "none"
         }
+        let bodyStyle = {};
         //内容控制
         let content = '';
         switch (this.props.appItem.detail.type) {
@@ -163,8 +166,13 @@ export default class Window extends React.Component {
                             <span onClick={this.closeWindow} style={{background: '#ed4646'}}></span>
                         </div>
                     </div>
-                    <div style={bodyStyle} className={style['win-body']}>{content}</div>
+                    <div style={bodyStyle} className={style['win-body']}>
+                        {content}
+                        <div style={maskStyle} className={style['win-mask']}></div>
+                    </div>
+
                 </div>
+
             </div>
         )
     }
