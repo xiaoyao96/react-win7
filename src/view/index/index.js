@@ -34,7 +34,6 @@ export default class Index extends React.Component{
         this.setState({
             runList: this.state.runList
         })
-        console.log(this.state.runList)
     }
     //关闭应用
     closeWindow(id){
@@ -141,7 +140,7 @@ export default class Index extends React.Component{
             <FooterIcon footerIconClick={this.footerIconClick.bind(this)} key={app.detail.appId} appItem={app}  />
         ))
         return (
-            <div className={style.main} style={{backgroundImage: 'url('+ bg +')'}} id="main">
+            <div className={style.main}>
                 {/*图标*/}
                 <div className={style.mydiv}>
                     <div className={style.windows}>

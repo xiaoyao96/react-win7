@@ -25,11 +25,23 @@ export default class Html extends React.Component{
     componentDidMount(){
 
     }
+
     render(){
+        let isPc = false;
+        let s = {}
+        if(window.navigator && window.navigator.userAgent.toLocaleLowerCase().indexOf('windows') > -1){
+            s = {
+                overflow: 'hidden'
+            }
+            isPc = true
+        }
         return (
             <div className={style["ifr-box"]}>
-                <iframe ref="ifr" onError={this.loadError} onLoad={this.loadFinish} className={style.body}  src={this.props.url}>
-                </iframe>
+                <div style={s} className={style["ifr-scroll"]}>
+                    <iframe style={{height: isPc ? 0 : "100000px"}} ref="ifr" onError={this.loadError} onLoad={this.loadFinish} className={style.body}
+                            scrolling="auto" frameBorder="0" src={this.props.url}>
+                    </iframe>
+                </div>
                 <div className={classnames({[style.loading]: true, [style.hide]: !this.state.loading})}>B</div>
             </div>
         )

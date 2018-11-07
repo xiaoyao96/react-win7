@@ -20,4 +20,16 @@
   height: 100%;
   margin: 0;
   padding: 0;
+  overflow: visible;
+  -webkit-overflow-scrolling: auto;
+}
+:global(#root):before{
+  content: '';
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  display: block;
+  left: 0;
+  top: 0;
+  background: url("../imgs/img0.jpg") #f5f5f5 no-repeat center fixed;
 }

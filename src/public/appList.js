@@ -7,7 +7,7 @@ const Applist = [
         "appId":"2",
         "name" : "笔记本",
         "type" : "txt",
-        "content" : "本项目React重构的windows 7桌面系统。许多细节等你发现",
+        "content" : "本项目React重构的windows 7桌面系统。许多细节等你发现本项目React重构的windows 7桌面系统。许多细节等你发现本项目React重构的windows 7桌面系统。许多细节等你发现本项目React重构的windows 7桌面系统。许多细节等你发现本项目React重构的windows 7桌面系统。许多细节等你发现本项目React重构的windows 7桌面系统。许多细节等你发现本项目React重构的windows 7桌面系统。许多细节等你发现本项目React重构的windows 7桌面系统。许多细节等你发现本项目React重构的windows 7桌面系统。许多细节等你发现本项目React重构的windows 7桌面系统。许多细节等你发现本项目React重构的windows 7桌面系统。许多细节等你发现本项目React重构的windows 7桌面系统。许多细节等你发现本项目React重构的windows 7桌面系统。许多细节等你发现本项目React重构的windows 7桌面系统。许多细节等你发现本项目React重构的windows 7桌面系统。许多细节等你发现本项目React重构的windows 7桌面系统。许多细节等你发现",
         "img" : text_edit
     },
     {

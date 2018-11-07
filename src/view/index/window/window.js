@@ -129,9 +129,12 @@ export default class Window extends React.Component {
     }
     render() {
         //样式控制
-        let winStyle = {left:`${this.state.position.x}px`, top: `${this.state.position.y}px`, width: `${this.state.size.w}px`, height: `${this.state.size.h}px`}
+        let winStyle = { transform: `translate(${this.state.position.x}px, ${this.state.position.y}px)`,width: `${this.state.size.w}px`, height: `${this.state.size.h}px`}
         winStyle.display = this.props.appItem.hide ? "none" : "flex";
         winStyle.zIndex = this.props.appItem.zIndex;
+        let bodyStyle = {
+            pointerEvents: this.props.moving ? "none" : "auto"
+        }
         //内容控制
         let content = '';
         switch (this.props.appItem.detail.type) {
@@ -139,25 +142,29 @@ export default class Window extends React.Component {
                 content = <p>{this.props.appItem.detail.content}</p>
                 break;
             case 'html':
+                bodyStyle.overflow = 'hidden'
                 content = <Html url={this.props.appItem.detail.url}/>
+                break;
+            case 'component':
+                let App = this.props.appItem.detail.component;
+                content = <App />;
                 break;
         }
 
-        let bodyStyle = {
-            pointerEvents: this.props.moving ? "none" : "auto"
-        }
+
         return (
             <div onMouseDown={this.focusWindow} style={winStyle} className={classnames({[style['my_win']]: true, [style.max]: this.state.max, [style.current]: this.props.appItem.focus})}>
-                <div onDoubleClick={this.maxWin} onClick={this.windowEndMove} onMouseDown={this.windowStartMove}
-                     className={style['win-head']}>
-                    <span style={{backgroundImage: `url(${this.props.appItem.detail.img})`}}>{this.props.appItem.detail.name}</span>
-                    <div className={style['win-btn']}>
-                        <span onClick={this.hiddenHandler} style={{background: '#8ec831'}}></span>
-                        <span onClick={this.clickMax} style={{background: '#ffd348'}}></span>
-                        <span onClick={this.closeWindow} style={{background: '#ed4646'}}></span>
+                <div className={style['win-cell']}>
+                    <div onDoubleClick={this.maxWin} onClick={this.windowEndMove} onMouseDown={this.windowStartMove} className={style['win-head']}>
+                        <span style={{backgroundImage: `url(${this.props.appItem.detail.img})`}}>{this.props.appItem.detail.name}</span>
+                        <div className={style['win-btn']}>
+                            <span onClick={this.hiddenHandler} style={{background: '#8ec831'}}></span>
+                            <span onClick={this.clickMax} style={{background: '#ffd348'}}></span>
+                            <span onClick={this.closeWindow} style={{background: '#ed4646'}}></span>
+                        </div>
                     </div>
+                    <div style={bodyStyle} className={style['win-body']}>{content}</div>
                 </div>
-                <div style={bodyStyle} className={style['win-body']}>{content}</div>
             </div>
         )
     }
