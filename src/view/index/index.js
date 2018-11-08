@@ -18,29 +18,6 @@ export default class Index extends React.Component {
             willMax: false,
             runList: []
         }
-        this.menu = [
-            {
-                value: '刷新',
-                click: _ => {
-                    this.setState({
-                        appList: []
-                    })
-                    setTimeout(_ => {
-                        this.setState({
-                            appList
-                        })
-                    },100)
-                }
-            },
-            {
-                value: '进入全屏',
-                click: this.requestFullScreen
-            },
-            {
-                value: '退出全屏',
-                click: this.exitFullscreen
-            }
-        ]
     }
 
     //打开应用
@@ -174,6 +151,29 @@ export default class Index extends React.Component {
         target.ele = ele;
     }
     render() {
+        this.menu = [
+            {
+                value: '刷新',
+                click: _ => {
+                    this.setState({
+                        appList: []
+                    })
+                    setTimeout(_ => {
+                        this.setState({
+                            appList
+                        })
+                    },100)
+                }
+            },
+            {
+                value: '进入全屏',
+                click: this.requestFullScreen
+            },
+            {
+                value: '退出全屏',
+                click: this.exitFullscreen
+            }
+        ]
         let links = this.state.appList.map(app => (
             <Link openWindow={this.openWindow.bind(this)} key={app.appId} appItem={app}/>
         ))

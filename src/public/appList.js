@@ -10,7 +10,11 @@ const Applist = [
         "name": "我的电脑",
         "type" : "component",
         "component": Computer,
-        "img" : pc
+        "img" : pc,
+        "size": {
+            w: 500,
+            h: 800
+        }
     },
     {
         "appId":"2",
@@ -38,7 +42,11 @@ const Applist = [
         "name": "我的git",
         "type" : "component",
         "component": Mygit,
-        "img" : github
+        "img" : github,
+        "size": {
+            w: 500,
+            h: 800
+        }
     }
 ]
 

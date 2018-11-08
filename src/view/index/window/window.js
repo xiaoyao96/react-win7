@@ -17,7 +17,15 @@ export default class Window extends React.Component {
         let w = document.documentElement.offsetWidth * 80 / 100,
             h = document.documentElement.offsetHeight * 80 / 100,
             x = document.documentElement.offsetWidth * 10 / 100,
-            y = document.documentElement.offsetHeight * 10 / 100;
+            y = document.documentElement.offsetHeight * 10 / 100,
+            size = this.props.appItem.detail.size;
+        if(size && document.documentElement.offsetWidth > size.w && document.documentElement.offsetHeight > size.h){
+            w = this.props.appItem.detail.size.w;
+            h = this.props.appItem.detail.size.h;
+            x = (document.documentElement.offsetWidth - w) / 2;
+            y = (document.documentElement.offsetHeight - h) / 2
+        }
+
         this.state = {
             max: false,
             position: {
@@ -29,21 +37,8 @@ export default class Window extends React.Component {
                 h
             }
         }
+
         this.customState = {}
-        this.menu = [
-            {
-                value: this.state.max ? '缩小' : '最大化',
-                click: this.clickMax
-            },
-            {
-                value: '最小化',
-                click: this.hiddenHandler
-            },
-            {
-                value: '关闭',
-                click: this.closeWindow
-            }
-        ]
     }
     componentWillMount(){
         this.props.saveComponent(this, this.props.appItem.detail.appId);
@@ -146,6 +141,20 @@ export default class Window extends React.Component {
         this.props.focusWindow(this.props.appItem.detail.appId)
     }
     render() {
+        this.menu = [
+            {
+                value: this.state.max ? '缩小' : '最大化',
+                click: this.clickMax
+            },
+            {
+                value: '最小化',
+                click: this.hiddenHandler
+            },
+            {
+                value: '关闭',
+                click: this.closeWindow
+            }
+        ]
         //样式控制
         // let winStyle = { transform: `translate(${this.state.position.x}px, ${this.state.position.y}px)`,width: `${this.state.size.w}px`, height: `${this.state.size.h}px`}
         let winStyle = { left: `${this.state.position.x}px`, top: `${this.state.position.y}px` ,width: `${this.state.size.w}px`, height: `${this.state.size.h}px`}

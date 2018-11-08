@@ -7,6 +7,11 @@ export default class Window extends React.Component {
     constructor(props){
         super(props);
         this.openWindow = this.openWindow.bind(this);
+    }
+    openWindow(){
+        this.props.openWindow(this.props.appItem.appId);
+    }
+    render() {
         this.menu = [
             {
                 value: "打开",
@@ -21,11 +26,6 @@ export default class Window extends React.Component {
                 disabled: true
             }
         ]
-    }
-    openWindow(){
-        this.props.openWindow(this.props.appItem.appId);
-    }
-    render() {
         let iconEle = <div style={{backgroundImage: 'url(' + this.props.appItem.img + ')'}}></div>;
         if(this.props.appItem.imgType === 'font'){
             iconEle = <div className={classnames({[this.props.appItem.img]: true, iconfont: true})}></div>
