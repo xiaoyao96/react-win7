@@ -1,7 +1,14 @@
 import React from 'react'
-
+import style from './mygit.scss'
 export default class Mygit extends React.Component{
     render(){
-        return <div>123</div>
+        return (
+            <div className={style.content}>
+                <div className={style.img}></div>
+                <p className={style.name}>姚逍</p>
+                <p className={style.user}>yx675258207</p>
+                <a href='https://github.com/yx675258207' target="_blank" className={style.btn}>进入我的Github</a>
+            </div>
+        )
     }
 }

@@ -2,6 +2,7 @@ import React from 'react'
 import style from './window.scss'
 import classnames from 'classnames'
 import Html from './html/html'
+import MenuArea from '../../../components/menuArea/menuArea'
 export default class Window extends React.Component {
     constructor(props) {
         super(props)
@@ -29,6 +30,23 @@ export default class Window extends React.Component {
             }
         }
         this.customState = {}
+        this.menu = [
+            {
+                value: this.state.max ? '缩小' : '最大化',
+                click: this.clickMax
+            },
+            {
+                value: '最小化',
+                click: this.hiddenHandler
+            },
+            {
+                value: '关闭',
+                click: this.closeWindow
+            }
+        ]
+    }
+    componentWillMount(){
+        this.props.saveComponent(this, this.props.appItem.detail.appId);
     }
     // 显示或隐藏窗口
     hiddenHandler(){
@@ -153,12 +171,11 @@ export default class Window extends React.Component {
                 content = <App />;
                 break;
         }
-
-
         return (
             <div onMouseDown={this.focusWindow} style={winStyle} className={classnames({[style['my_win']]: true, [style.max]: this.state.max, [style.current]: this.props.appItem.focus})}>
                 <div className={style['win-cell']}>
                     <div onDoubleClick={this.maxWin} onClick={this.windowEndMove} onMouseDown={this.windowStartMove} className={style['win-head']}>
+                        <MenuArea menu={this.menu} />
                         <span style={{backgroundImage: `url(${this.props.appItem.detail.img})`}}>{this.props.appItem.detail.name}</span>
                         <div className={style['win-btn']}>
                             <span onClick={this.hiddenHandler} style={{background: '#8ec831'}}></span>

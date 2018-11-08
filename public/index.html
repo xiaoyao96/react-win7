@@ -25,12 +25,43 @@
     -->
     <title>windows 7</title>
     <style>
+      /** 重置列表元素 **/
+      ul, ol { list-style: none; }
+
+      /** 重置文本格式元素 **/
+      a { text-decoration: none; }
+      a:hover { text-decoration: none; }
+      botton, botton:active, button:focus{
+        color: inherit;
+        outline: none;
+      }
+
+      /** 重置表单元素 **/
+      legend { color: #000; } /* for ie6 */
+      fieldset, img { border: 0; } /* img 搭车：让链接里的 img 无边框 */
+      button, input, select, textarea { font-size: 100%; } /* 使得表单元素在 ie 下能继承字体大小 */
+      /* 注：optgroup 无法扶正 */
+
+      /** 重置表格元素 **/
+      table { border-collapse: collapse; border-spacing: 0; }
+
+      /* 清除浮动 */
+      .ks-clear:after, .clear:after {
+        content: '\20';
+        display: block;
+        height: 0;
+        clear: both;
+      }
+      .ks-clear, .clear {
+        *zoom: 1;
+      }
+
       @font-face {font-family: "iconfont";
-        src: url('//at.alicdn.com/t/font_908811_onxvbadpag.eot?t=1541598476847'); /* IE9*/
-        src: url('//at.alicdn.com/t/font_908811_onxvbadpag.eot?t=1541598476847#iefix') format('embedded-opentype'), /* IE6-IE8 */
-        url('data:application/x-font-woff;charset=utf-8;base64,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') format('woff'),
-        url('//at.alicdn.com/t/font_908811_onxvbadpag.ttf?t=1541598476847') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
-        url('//at.alicdn.com/t/font_908811_onxvbadpag.svg?t=1541598476847#iconfont') format('svg'); /* iOS 4.1- */
+        src: url('//at.alicdn.com/t/font_908811_eae72bgwkhu.eot?t=1541670815779'); /* IE9*/
+        src: url('//at.alicdn.com/t/font_908811_eae72bgwkhu.eot?t=1541670815779#iefix') format('embedded-opentype'), /* IE6-IE8 */
+        url('data:application/x-font-woff;charset=utf-8;base64,d09GRgABAAAAAASUAAsAAAAABvQAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAABHU1VCAAABCAAAADMAAABCsP6z7U9TLzIAAAE8AAAARAAAAFY8dkntY21hcAAAAYAAAABbAAABlNEuN/tnbHlmAAAB3AAAALAAAAC4QHaoTWhlYWQAAAKMAAAALwAAADYTM5T8aGhlYQAAArwAAAAcAAAAJAfeA4VobXR4AAAC2AAAAA4AAAAQEAAAAGxvY2EAAALoAAAACgAAAAoAhABObWF4cAAAAvQAAAAeAAAAIAESAB5uYW1lAAADFAAAAUUAAAJtPlT+fXBvc3QAAARcAAAANgAAAEcKpzsweJxjYGRgYOBikGPQYWB0cfMJYeBgYGGAAJAMY05meiJQDMoDyrGAaQ4gZoOIAgCKIwNPAHicY2BkYWCcwMDKwMHUyXSGgYGhH0IzvmYwYuRgYGBiYGVmwAoC0lxTGByeMTz/zdzwv4EhhrmBoQEozAiSAwDv2gzfeJztkMENgDAMA8+0IIQYBfFiGl5MX4bgUdyGMbB0seIoHwMjkMxmMuhCNJ1O1fPE0vPM7n2yi6HofmqFQrgl32b7EJ+a+LX2eXxban0FbomioOX3E6AX+KcTIgB4nD2MwQoBURiFz7mX0Z1R3AwTC0XxANIoC9OMhReZd1CUbKQp3sAL8ACW4j0sPIWF8jMLWX11vs6HAvBZ67seQaMEDxWAtmdpO/bPkyy5kaU+v1/Keb8Yyy7khEfZcip7iWZc8CljrpCf895VtXUMCxQNw2G/W6ITOAEbg3Co6jJnZvymK6mnlMeD2/QNM2Zuq2byrVItS5p7/Fo39dARFGAUO7xIoieSSPIFHPksiXicY2BkYGAA4pITpxfG89t8ZeBmYQCBG1wa8xH0/wYWBmZHIJeDgQkkCgAmMAl8AHicY2BkYGBu+N/AEMPCAAJAkpEBFbAAAEcKAm14nGNhYGBgQcIAALAAEQAAAAAAAAAoAE4AXAAAeJxjYGRgYGBhEAJiEGACYi4gZGD4D+YzAAAK1AExAAB4nGWPTU7DMBCFX/oHpBKqqGCH5AViASj9EatuWFRq911036ZOmyqJI8et1ANwHo7ACTgC3IA78EgnmzaWx9+8eWNPANzgBx6O3y33kT1cMjtyDRe4F65TfxBukF+Em2jjVbhF/U3YxzOmwm10YXmD17hi9oR3YQ8dfAjXcI1P4Tr1L+EG+Vu4iTv8CrfQ8erCPuZeV7iNRy/2x1YvnF6p5UHFockikzm/gple75KFrdLqnGtbxCZTg6BfSVOdaVvdU+zXQ+ciFVmTqgmrOkmMyq3Z6tAFG+fyUa8XiR6EJuVYY/62xgKOcQWFJQ6MMUIYZIjK6Og7VWb0r7FDwl57Vj3N53RbFNT/c4UBAvTPXFO6stJ5Ok+BPV8bUnV0K27LnpQ0kV7NSRKyQl7WtlRC6gE2ZVeOEXpc0Yk/KGdI/wAJWm7IAAAAeJxjYGKAAC4G7ICFkYmRmZGFkZWBvTwzLyW/vJgtLTEvozSTqzK/NCszMa8kv5SBAQCaQgoXAAA=') format('woff'),
+        url('//at.alicdn.com/t/font_908811_eae72bgwkhu.ttf?t=1541670815779') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+        url('//at.alicdn.com/t/font_908811_eae72bgwkhu.svg?t=1541670815779#iconfont') format('svg'); /* iOS 4.1- */
       }
 
       .iconfont {
@@ -41,9 +72,12 @@
         -moz-osx-font-smoothing: grayscale;
       }
 
-      .icon-icon-test:before { content: "\e63a"; }
+      .icon-windows:before { content: "\e7fb"; }
 
-      .icon-icon-test1:before { content: "\e639"; }
+      .icon-fanhui:before { content: "\e600"; }
+
+      .icon-youjiantou:before { content: "\e601"; }
+
     </style>
   </head>
   <body>

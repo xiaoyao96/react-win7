@@ -3,9 +3,10 @@
   width: 76px;
   height: 90px;
   margin: 10px;
+  position: relative;
   -moz-user-select: none;
   -webkit-user-select: none;
-  >a{
+  a{
     cursor: default;
     display: block;
     width: 100%;
@@ -52,9 +53,7 @@
       font-size: 12px;
       margin: 5px 0 0 0;
       text-shadow: 1px 1px 1px #000000;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
+      word-break: break-all;
     }
   }
 
