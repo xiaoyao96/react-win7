@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import Router from './router/router';
 import * as serviceWorker from './serviceWorker';
 import './public/public.scss';
+import 'babel-polyfill';
 //全屏
 Object.defineProperty(React.Component.prototype, 'requestFullScreen', {
     value: function (element) {

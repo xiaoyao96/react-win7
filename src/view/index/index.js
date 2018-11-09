@@ -18,6 +18,13 @@ export default class Index extends React.Component {
             willMax: false,
             runList: []
         }
+        document.onkeypress = (e) => {
+            if(e.code === 'Enter' || e.which === 13 || e.keyCode === 13){
+                let target = document.querySelector(':focus');
+                console.log(target)
+                // this.openWindow();
+            }
+        }
     }
 
     //打开应用

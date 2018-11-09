@@ -48,7 +48,7 @@ export default class Menu extends React.Component{
         ));
         return (
             <div className={style.menu}>
-                <div ref="menu" onMouseDown={Menu.stop} onMouseUp={Menu.stop} style={{visibility: this.state.show ? "visible": "hidden", left: this.state.x + 'px', top: this.state.y + 'px'}} className={style['mydiv_body']}>
+                <div ref="menu" onMouseDown={Menu.stop} onMouseUp={Menu.stop} style={{display: this.state.show ? "block": "none", left: this.state.x + 'px', top: this.state.y + 'px'}} className={style['mydiv_body']}>
                     <span className={style.shu}></span>
                     {menus}
                 </div>

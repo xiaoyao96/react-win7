@@ -7,9 +7,15 @@ export default class Window extends React.Component {
     constructor(props){
         super(props);
         this.openWindow = this.openWindow.bind(this);
+        this.checkFocus = this.checkFocus.bind(this)
     }
     openWindow(){
         this.props.openWindow(this.props.appItem.appId);
+    }
+    checkFocus(e){
+        if(e.code === 'Enter' || e.which === 13 || e.keyCode === 13){
+            this.openWindow()
+        }
     }
     render() {
         this.menu = [
@@ -31,7 +37,7 @@ export default class Window extends React.Component {
             iconEle = <div className={classnames({[this.props.appItem.img]: true, iconfont: true})}></div>
         }
         return (
-            <li onTouchEnd={this.openWindow} onDoubleClick={this.openWindow} className={style.link}>
+            <li onTouchEnd={this.openWindow} onKeyDown={this.checkFocus} onDoubleClick={this.openWindow} className={style.link}>
                 <MenuArea menu={this.menu}>
                     <a href="javascript:void(0);" app-id={this.props.appItem.appId}>
                         {iconEle}
