@@ -30,7 +30,7 @@ export default class MenuArea extends React.Component{
     }
     render(){
         return (
-            <div className={style['menu-area'] + " a"} onMouseDown={this.hide} onMouseUp={this.show}>
+            <div className={style['menu-area']} onMouseDown={this.hide} onMouseUp={this.show}>
                 {this.props.children}
             </div>
         )
