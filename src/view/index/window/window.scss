@@ -1,7 +1,9 @@
 
 .my_win {
+  opacity: .9;
   position: fixed;
   z-index: 8;
+  transition: .2s opacity;
 }
 .win-mask{
   position: absolute;
@@ -23,8 +25,8 @@
   flex-direction: column;
   animation: windowShow .2s;
 }
-.my_win.current .win-head:before{
-  //background-color: #A8C7F0;
+.my_win.current{
+  opacity: 1;
 }
 .my_win .win-head {
   z-index: 1;
