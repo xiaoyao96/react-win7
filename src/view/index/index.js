@@ -25,10 +25,6 @@ export default class Index extends React.Component {
                 // this.openWindow();
             }
         }
-        this.Ajax('users/login', 'post', {
-            username: 'admin',
-            userpwd: '102014'
-        }).then(console.log);
     }
     //打开应用
     openWindow(id) {
