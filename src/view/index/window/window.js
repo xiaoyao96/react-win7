@@ -179,6 +179,9 @@ export default class Window extends React.Component {
                 let App = this.props.appItem.detail.component;
                 content = <App />;
                 break;
+            default:
+                content = <p>{this.props.appItem.detail.content}</p>
+                break;
         }
         return (
             <div onMouseDown={this.focusWindow} style={winStyle} className={classnames({[style['my_win']]: true, [style.max]: this.state.max, [style.current]: this.props.appItem.focus})}>

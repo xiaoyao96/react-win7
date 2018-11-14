@@ -4,6 +4,7 @@ import Router from './router/router';
 import * as serviceWorker from './serviceWorker';
 import './public/public.scss';
 import 'babel-polyfill';
+import Ajax from './public/request';
 //全屏
 Object.defineProperty(React.Component.prototype, 'requestFullScreen', {
     value: function (element) {
@@ -29,6 +30,9 @@ Object.defineProperty(React.Component.prototype, 'exitFullscreen', {
             de.webkitCancelFullScreen();
         }
     }
+})
+Object.defineProperty(React.Component.prototype, 'Ajax', {
+    value: Ajax
 })
 //禁用右键菜单
 document.oncontextmenu = function() {

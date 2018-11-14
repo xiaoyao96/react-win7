@@ -6,7 +6,7 @@ import Mygit from '../myApp/mygit/mygit'
 import Computer from '../myApp/computer/computer'
 const Applist = [
     {
-        "appId":"5",
+        "appId": Math.random().toString(),
         "name": "我的电脑",
         "type" : "component",
         "component": Computer,
@@ -17,28 +17,28 @@ const Applist = [
         }
     },
     {
-        "appId":"2",
+        "appId":Math.random().toString(),
         "name" : "笔记本",
         "type" : "txt",
         "content" : "本项目React重构的windows 7桌面系统。",
         "img" : text_edit
     },
     {
-        "appId":"1",
+        "appId":Math.random().toString(),
         "type" : "txt",
         "name": "回收站",
         "content": "开发中..",
         "img" : recycle
     },
     {
-        "appId":"3",
+        "appId":Math.random().toString(),
         "name": "wxMiniStore",
         "type" : "html",
         "url": "https://blog.csdn.net/qq_35173602/article/details/82349742",
         "img" : github
     },
     {
-        "appId":"4",
+        "appId":Math.random().toString(),
         "name": "我的git",
         "type" : "component",
         "component": Mygit,

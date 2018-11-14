@@ -25,8 +25,11 @@ export default class Index extends React.Component {
                 // this.openWindow();
             }
         }
+        this.Ajax('users/login', 'post', {
+            username: 'admin',
+            userpwd: '102014'
+        }).then(console.log);
     }
-
     //打开应用
     openWindow(id) {
         let target = this.state.runList.find(app => app.detail.appId === id);
