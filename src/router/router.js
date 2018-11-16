@@ -9,7 +9,9 @@ export default class Router extends Component{
         return (
             <HashRouter>
                 <Switch>
+                    {/*<Route redirect='/' path='/*'/>*/}
                     <Route exact path='/' component={Index} />
+
                 </Switch>
             </HashRouter>)
     }

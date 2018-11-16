@@ -5,12 +5,12 @@ import Link from './link/link'
 import Window from './window/window'
 import FooterIcon from './footerIcon/footerIcon'
 import Datetime from './datetime/datetime'
+import Login from './login/login'
 import Menu from '../../components/menu/menu'
 import MenuArea from '../../components/menuArea/menuArea'
+
 import appList from '../../public/appList.js'
 export default class Index extends React.Component {
-
-
     constructor(props) {
         super(props);
         this.state = {
@@ -18,13 +18,7 @@ export default class Index extends React.Component {
             willMax: false,
             runList: []
         }
-        document.onkeypress = (e) => {
-            if(e.code === 'Enter' || e.which === 13 || e.keyCode === 13){
-                let target = document.querySelector(':focus');
-                console.log(target)
-                // this.openWindow();
-            }
-        }
+
     }
     //打开应用
     openWindow(id) {
@@ -149,12 +143,19 @@ export default class Index extends React.Component {
     static hideMenu(){
         window.getMenu().setState({show: false})
     }
+    //保存组件
     saveComponent(ele, id){
         let target = this.state.runList.find(app => app.detail.appId === id);
         if(!target){
             return;
         }
         target.ele = ele;
+    }
+    //移除login组件
+    removeLogin(){
+        this.setState({
+            loginRemoved: true
+        })
     }
     render() {
         this.menu = [
@@ -195,9 +196,7 @@ export default class Index extends React.Component {
         ))
         return (
                 <div onMouseDown={Index.hideMenu} className={style.main}>
-
                     {/*图标*/}
-
                     <div className={style.mydiv}>
                         <MenuArea menu={this.menu}>
                             <div className={style.windows}>
@@ -207,8 +206,6 @@ export default class Index extends React.Component {
                             </div>
                         </MenuArea>
                     </div>
-
-
                     {/*应用窗口*/}
                     <div className={style['app-ceng']}>
                         <div className={style['app-list']}>
@@ -236,6 +233,8 @@ export default class Index extends React.Component {
                         </div>
                     </div>
                     <Menu />
+                    {/*欢迎页*/}
+                    {this.state.loginRemoved ? null : <Login removeLogin={this.removeLogin.bind(this)} />}
                 </div>
         )
     }

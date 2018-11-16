@@ -34,6 +34,9 @@ Object.defineProperty(React.Component.prototype, 'exitFullscreen', {
 Object.defineProperty(React.Component.prototype, 'Ajax', {
     value: Ajax
 })
+
+Ajax('/visited', 'post').then(console.log);
+
 //禁用右键菜单
 document.oncontextmenu = function() {
     return false;

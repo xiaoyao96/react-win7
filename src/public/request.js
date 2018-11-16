@@ -12,5 +12,5 @@ export default function Ajax(api, method, data){
             'Authorization': 'Bearer ' + localStorage.token
         }
     }
-    return Axios(params)
+    return Axios(params).then(res => res.data);
 }
