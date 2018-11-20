@@ -11,6 +11,7 @@ export default class Menu extends React.Component{
             menu: []
         }
         this.click = this.click.bind(this);
+        this.getMenuDom = this.getMenuDom.bind(this);
         window.getMenu = function () {
             return this;
         }.bind(this)
@@ -35,12 +36,16 @@ export default class Menu extends React.Component{
         this.setState({
             show: true
         }, _ => {
-            if(this.refs.menu.offsetHeight + this.state.y > document.documentElement.offsetHeight){
+            if(this.menuDom.offsetHeight + this.state.y > document.documentElement.offsetHeight){
                 this.setState({
-                    y: this.state.y - this.refs.menu.offsetHeight
+                    y: this.state.y - this.menuDom.offsetHeight
                 })
             }
         })
+    }
+    getMenuDom(dom){
+        console.log(dom)
+        this.menuDom = dom;
     }
     render(){
         let menus = (this.state.menu || []).map((m,i) => (
@@ -48,7 +53,7 @@ export default class Menu extends React.Component{
         ));
         return (
             <div className={style.menu}>
-                <div ref="menu" onMouseDown={Menu.stop} onMouseUp={Menu.stop} style={{display: this.state.show ? "block": "none", left: this.state.x + 'px', top: this.state.y + 'px'}} className={style['mydiv_body']}>
+                <div ref={this.getMenuDom} onMouseDown={Menu.stop} onMouseUp={Menu.stop} style={{display: this.state.show ? "block": "none", left: this.state.x + 'px', top: this.state.y + 'px'}} className={style['mydiv_body']}>
                     <span className={style.shu}></span>
                     {menus}
                 </div>
