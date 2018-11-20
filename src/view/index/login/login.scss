@@ -1,0 +1,123 @@
+.loading{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  transition: 1s;
+  background: #222;
+}
+.loading.hide{
+  opacity: 0;
+  pointer-events: none;
+}
+
+.loading p{
+  width: 100%;
+  color: #fff;
+  text-align: center;
+  font-family: "微软雅黑";
+  margin: 20px 0;
+}
+.loading p span{
+  font-size: 30px;
+}
+.loadding-content{
+  position: relative;
+  top: 40%;
+  transform: translateY(-50%);
+}
+
+/*开机动画*/
+.spinner div{
+  width: 50px;
+  height: 50px;
+  float: left;
+  margin-bottom: 5px;
+}
+.spinner div:nth-of-type(odd){
+  margin-right: 5px;
+}
+.spinner div:nth-of-type(even){
+  clear: right;
+}
+.spinner {
+  width: 110px;
+  height: 110px;
+  margin: 0 auto 100px auto;
+  -webkit-animation: rotateplane 2.4s infinite ease-in-out;
+  animation: rotateplane 2.4s infinite ease-in-out;
+}
+
+@-webkit-keyframes rotateplane {
+  0% {
+    transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+    -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg)
+  } 25% {
+      transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+      -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg)
+    } 50% {
+        transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+        -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+      } 75%{
+          transform: perspective(120px) rotateX(0deg) rotateY(-179.9deg);
+          -webkit-transform: perspective(120px) rotateX(0deg) rotateY(-179.9deg)
+        } 100%{
+            transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+            -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg)
+          }
+}
+@keyframes rotateplane {
+  0% {
+    transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+    -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg)
+  } 25% {
+      transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+      -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg)
+    } 50% {
+        transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+        -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+      } 75%{
+          transform: perspective(120px) rotateX(0deg) rotateY(-179.9deg);
+          -webkit-transform: perspective(120px) rotateX(0deg) rotateY(-179.9deg)
+        } 100%{
+            transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+            -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg)
+          }
+}
+
+.loading-bar{
+  width: 300px;
+  height: 14px;
+  border-radius: 5px;
+  border: 2px solid #fff;
+  margin: 0 auto;
+  position: relative;
+  padding: 2px;
+  box-sizing: border-box;
+}
+.loading-bar .bar{
+  height: 6px;
+  width: 0%;
+  max-width: 100%;
+  border-radius: 3px;
+  background-color: #fff;
+}
+.loading-bar p{
+  text-align: center;
+  margin: 0;
+  position: absolute;
+  height: 30px;
+  top: -40px;
+  line-height: 30px;
+}
+.loading-bar span{
+  position: absolute;
+  top: -12px;
+  left: 310px;
+  height: 34px;
+  line-height: 34px;
+  color: #fff;
+  font-size: 16px;
+}

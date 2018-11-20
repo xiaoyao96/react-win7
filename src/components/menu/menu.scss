@@ -1,0 +1,85 @@
+@keyframes show {
+  from{
+    opacity: .3;
+    transform: scale(.9);
+    transform-origin: top left;
+  }
+  to{
+    opacity: 1;
+    transform: scale(1);
+    transform-origin: top left;
+  }
+}
+.mydiv_body {
+  position: fixed;
+  height: auto;
+  border: 1px solid #979797;
+  background: #F0F0F0;
+  box-sizing: border-box;
+  padding: 2px;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  overflow: hidden;
+  animation: show .1s;
+}
+
+.mydiv_body>.menu-item {
+  position: relative;
+  cursor: default;
+  width: 130px;
+  color: #000000;
+  font-family: '微软雅黑';
+  padding: 3px 0 3px 35px;
+  font-size: 12px;
+  border: 1px solid transparent;
+}
+.mydiv_body>.menu-item.disabled{
+  color: #999 !important;
+}
+
+.mydiv_body>.menu-item:not(.disabled):hover {
+  border: 1px solid #a8c7f0;
+  border-radius: 3px;
+  background:  linear-gradient(180deg, rgba(70, 161, 205, .1),rgba(70, 161, 205, .2))
+}
+
+.mydiv_body>.menu-item>font {
+  position: absolute;
+  right: 5px;
+  transform: rotate(-30deg) scale(0.6);
+}
+
+.shu {
+  position: absolute;
+  height: 100%;
+  left: 25px;
+  width: 1px;
+  background: #DDDDDD;
+}
+
+.shu:before {
+  position: absolute;
+  content: '';
+  height: 100px;
+  left: 1px;
+  width: 1px;
+  background: #ffffff;
+}
+
+#clear:before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 27px;
+  width: 100%;
+  display: block;
+  height: 1px;
+}
+.menu{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}

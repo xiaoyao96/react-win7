@@ -1,0 +1,36 @@
+
+.win-datetime{
+  position: absolute;
+  box-sizing: border-box;
+  width: 100px;
+  height: 100%;
+  right: 0;
+  top:0;
+}
+.win-datetime:before{
+  content: '';
+  display: block;
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  padding: 20px;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,.2);
+  -webkit-filter: blur(15px);
+  -moz-filter: blur(15px);
+  -ms-filter: blur(15px);
+  -o-filter: blur(15px);
+  filter: blur(15px);
+}
+.win-datetime>p{
+  position: relative;
+  width: 100%;
+  height:20px;
+  margin: 0;
+  text-align: center;
+  color: white;
+  line-height: 16px;
+  font-size: 12px;
+  font-family: "微软雅黑";
+}
