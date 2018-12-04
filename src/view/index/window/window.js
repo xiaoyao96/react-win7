@@ -3,7 +3,10 @@ import style from './window.scss'
 import classnames from 'classnames'
 import Html from './html/html'
 import MenuArea from '../../../components/menuArea/menuArea'
-export default class Window extends React.Component {
+import { connect } from 'react-redux'
+import { focusApp, changeMoveState, closeApp } from "../../../store/action";
+
+class Window extends React.Component {
     constructor(props) {
         super(props)
         this.windowStartMove = this.windowStartMove.bind(this)
@@ -41,7 +44,7 @@ export default class Window extends React.Component {
         this.customState = {}
     }
     componentWillMount(){
-        this.props.saveComponent(this, this.props.appItem.detail.appId);
+        // this.props.saveComponent(this, this.props.appItem.detail.appId);
     }
     // 显示或隐藏窗口
     hiddenHandler(){
@@ -53,7 +56,7 @@ export default class Window extends React.Component {
         this.customState.originY = e.pageY;
         this.customState.startX = this.state.position.x;
         this.customState.startY = this.state.position.y;
-        this.props.changeMovingState('start');
+        this.props.changeMovingState(true);
         window.addEventListener('mousemove', this.windowMoving);
         window.addEventListener('mouseup', this.windowEndMove);
     }
@@ -106,13 +109,14 @@ export default class Window extends React.Component {
     //结束移动
     windowEndMove() {
         //如果将放大
+        console.log(this.props.willMax)
         if(this.props.willMax){
             this.props.WillMaxCtrl(false);
             this.setState({
                 max: !this.state.max
             })
         }
-        this.props.changeMovingState('end');
+        this.props.changeMovingState(false);
         window.removeEventListener('mousemove', this.windowMoving);
         window.removeEventListener('mouseup', this.windowEndMove);
     }
@@ -129,6 +133,7 @@ export default class Window extends React.Component {
     }
     //全屏
     maxWin() {
+        console.log(1)
         this.setState({
             max: !this.state.max
         })
@@ -206,3 +211,24 @@ export default class Window extends React.Component {
         )
     }
 }
+
+export default connect(
+    state => {
+        return{
+            moving: state.moving
+        }
+    },
+    (dispatch, props) => {
+        return {
+            closeWindow(){
+              dispatch(closeApp(props.appItem.appId))
+            },
+            changeMovingState(moving){
+              dispatch(changeMoveState(moving))
+            },
+            focusWindow(){
+                dispatch(focusApp(props.appItem.appId))
+            }
+        }
+    }
+)(Window)

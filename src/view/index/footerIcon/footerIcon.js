@@ -30,14 +30,14 @@ export default class FooterIcon extends React.Component {
     }
     render() {
         this.menu = [
-            {
-                value: this.props.appItem.ele.state.max ? '还原' : '最大化',
-                click: this.props.appItem.ele.clickMax
-            },
-            {
-                value: '关闭',
-                click: this.props.appItem.ele.closeWindow
-            }
+            // {
+            //     value: this.props.appItem.ele.state.max ? '还原' : '最大化',
+            //     click: this.props.appItem.ele.clickMax
+            // },
+            // {
+            //     value: '关闭',
+            //     click: this.props.appItem.ele.closeWindow
+            // }
         ]
         return (
             <div onMouseDown={this.iconMousedown} className={classnames({[style['win-task-app']]: true, [style.down]: this.state.active})} onClick={this.footerIconClick}>

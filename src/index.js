@@ -5,6 +5,14 @@ import * as serviceWorker from './serviceWorker';
 import './public/public.scss';
 import 'babel-polyfill';
 import Ajax from './public/request';
+import { Provider } from 'react-redux'
+import { createStore } from 'redux'
+import reducer from './store/reducer'
+import { fromJS } from 'immutable'
+console.log(fromJS([1,2]))
+let store = createStore(reducer, {
+    runList: []
+})
 //全屏
 Object.defineProperty(React.Component.prototype, 'requestFullScreen', {
     value: function (element) {
@@ -43,7 +51,9 @@ document.oncontextmenu = function() {
 }
 
 ReactDOM.render(
-    <Router />
+    <Provider store={store}>
+        <Router />
+    </Provider>
     , document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
