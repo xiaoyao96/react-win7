@@ -19,7 +19,6 @@ class Index extends React.Component {
             willMax: false,
             runList: []
         }
-
     }
     removeLogin(){
 

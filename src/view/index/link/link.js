@@ -3,7 +3,7 @@ import style from './link.scss'
 import classnames from 'classnames'
 import MenuArea from '../../../components/menuArea/menuArea'
 import { connect } from 'react-redux'
-import { openApp } from "../../../store/action";
+import { openApp } from "../../../store/actions/appActions";
 
 class Window extends React.Component {
     constructor(props){

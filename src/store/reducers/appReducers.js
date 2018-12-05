@@ -1,7 +1,8 @@
-import {OPEN_APP, HIDE_APP, CLOSE_APP, FOCUS_APP, MOVE_APP, SHOW_APP, TOGGLE_APP} from "./action";
+import {OPEN_APP, HIDE_APP, CLOSE_APP, FOCUS_APP, MOVE_APP, SHOW_APP, TOGGLE_APP} from "../actions/appActions";
 import { fromJS, Map } from 'immutable'
-import appList from '../public/appList'
-function appHandler(state, action){
+import appList from '../../public/appList'
+
+export function appHandler(state = [], action){
     let runApp = fromJS(state);
     switch (action.type){
         case OPEN_APP:
@@ -81,17 +82,11 @@ function appHandler(state, action){
             return state
     }
 }
-function changeMoveState(state, action) {
+export function changeMoveState(state = false, action) {
     switch (action.type){
         case MOVE_APP:
             return !!action.moving
         default:
             return state
-    }
-}
-export default function(state, action){
-    return {
-        runList: appHandler(state.runList, action),
-        moving: changeMoveState(state.moving, action)
     }
 }

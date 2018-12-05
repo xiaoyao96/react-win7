@@ -7,7 +7,7 @@ import 'babel-polyfill';
 import Ajax from './public/request';
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
-import reducer from './store/reducer'
+import reducer from './store/index'
 import { fromJS } from 'immutable'
 console.log(fromJS([1,2]))
 let store = createStore(reducer, {

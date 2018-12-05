@@ -4,7 +4,7 @@ import classnames from 'classnames'
 import Html from './html/html'
 import MenuArea from '../../../components/menuArea/menuArea'
 import { connect } from 'react-redux'
-import { focusApp, changeMoveState, closeApp } from "../../../store/action";
+import { focusApp, changeMoveState, closeApp } from "../../../store/actions/appActions";
 
 class Window extends React.Component {
     constructor(props) {
