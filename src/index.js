@@ -10,9 +10,7 @@ import { createStore } from 'redux'
 import reducer from './store/index'
 import { fromJS } from 'immutable'
 console.log(fromJS([1,2]))
-let store = createStore(reducer, {
-    runList: []
-})
+let store = createStore(reducer)
 //全屏
 Object.defineProperty(React.Component.prototype, 'requestFullScreen', {
     value: function (element) {

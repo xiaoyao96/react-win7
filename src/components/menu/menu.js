@@ -13,6 +13,7 @@ class Menu extends React.Component{
             this.hide();
         })
     }
+
     static stop(e){
         e.stopPropagation()
     }
@@ -33,11 +34,11 @@ class Menu extends React.Component{
     }
     render(){
         let menus = (this.props.menu.list || []).map((m,i) => (
-            <div key={i} onMouseUp={ m.disabled ? _ => 0 : (ev) => { this.click(m) }} className={classnames({[style['menu-item']]: true, [style.disabled]: m.disabled})}>{m.value}</div>
+            <div key={i} onMouseUp={ (m.disabled || typeof m.click !== 'function') ? _ => 0 : (ev) => { this.click(m) }} className={classnames({[style['menu-item']]: true, [style.disabled]: m.disabled})}>{m.value}</div>
         ));
         return (
             <div className={style.menu}>
-                <div ref={this.getMenuDom} onMouseDown={Menu.stop} onMouseUp={Menu.stop} style={{display: this.props.menu.show ? "block": "none", left: this.props.menu.x + 'px', top: this.props.menu.y + 'px'}} className={style['mydiv_body']}>
+                <div ref={this.getMenuDom} onMouseDown={Menu.stop} onMouseUp={Menu.stop} style={{visibility: this.props.menu.show ? "visible": "hidden", left: this.props.menu.x + 'px', top: this.props.menu.y + 'px'}} className={style['mydiv_body']}>
                     <span className={style.shu}></span>
                     {menus}
                 </div>

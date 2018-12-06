@@ -11,14 +11,14 @@ class Window extends React.Component {
     }
     checkFocus(e){
         if(e.code === 'Enter' || e.which === 13 || e.keyCode === 13){
-            this.openWindow()
+            this.props.openWindow()
         }
     }
     render() {
         this.menu = [
             {
                 value: "打开",
-                click: this.openWindow
+                click: this.props.openWindow
             },
             {
                 value: '删除',

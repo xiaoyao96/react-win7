@@ -9,19 +9,15 @@ class MenuArea extends React.Component{
         this.show = this.show.bind(this);
     }
     show(e){
-
-        console.log(this.props.menu)
-        let y = e.pageY;
-        let x = e.pageX;
         if(e.button === 2){
-            this.props.setMenuPosition(x, y)
+            let y = e.pageY;
+            let x = e.pageX;
+            e.stopPropagation()
             this.props.showMenu(this.props.menu);
-            setTimeout(_ => {
-                if(this.props.menuDom.offsetHeight + y > document.documentElement.offsetHeight){
-                    y = y - this.props.menuDom.offsetHeight
-                }
-                this.props.setMenuPosition(x, y)
-            }, 0)
+            if(this.props.menuDom.offsetHeight + y > document.documentElement.offsetHeight){
+                y = y - this.props.menuDom.offsetHeight
+            }
+            this.props.setMenuPosition(x, y)
         }
     }
     render(){
