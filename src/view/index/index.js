@@ -1,96 +1,120 @@
 import React from 'react'
-import './index.scss'
+import style from './index.scss'
 import bg from '../../imgs/img0.jpg'
-import Link from '../../components/link/link'
-import Window from '../../components/window/window'
-import FooterIcon from  '../../components/footerIcon/footerIcon'
-import appList from '../../public/appList'
-export default class Index extends React.Component{
-    constructor(props){
+import Link from './link/link'
+import Window from './window/window'
+import FooterIcon from './footerIcon/footerIcon'
+import Datetime from './datetime/datetime'
+import Login from './login/login'
+import Menu from '../../components/menu/menu'
+import MenuArea from '../../components/menuArea/menuArea'
+import appList from '../../public/appList.js'
+import { connect } from 'react-redux'
+
+class Index extends React.Component {
+    constructor(props) {
         super(props);
         this.state = {
-            appList
+            appList,
+            willMax: false,
+            runList: []
         }
     }
-    //打开应用
-    openWindow(appId){
-        let target = this.state.appList.find(app => app.appId == appId);
-        if(target.isRuning){
-            return;
-        }
-        target.isRuning = true;
-        this.setState({
-            appList
-        })
-    }
-    //关闭应用
-    closeWindow(appId){
-        let target = this.state.appList.find(app => app.appId == appId);
-        if(!target.isRuning){
-            return;
-        }
-        target.isRuning = false;
-        this.setState({
-            appList
-        })
-    }
-    render(){
-        console.log('update')
-        let links = this.state.appList.map(app => (
-            <Link openWindow={this.openWindow.bind(this)} key={app.appId} appItem={app} />
-        ))
-        let running = this.state.appList
-            .filter(app => app.isRuning);
+    removeLogin(){
 
+    }
+    saveComponent(){
+
+    }
+    WillMaxCtrl(result){
+        this.setState({
+            willMax: result
+        })
+    }
+    render() {
+        this.menu = [
+            {
+                value: '刷新',
+                click: _ => {
+                    this.setState({
+                        appList: []
+                    })
+                    setTimeout(_ => {
+                        this.setState({
+                            appList
+                        })
+                    },100)
+                }
+            },
+            {
+                value: '进入全屏',
+                click: this.requestFullScreen
+            },
+            {
+                value: '退出全屏',
+                click: this.exitFullscreen
+            }
+        ]
+        let links = this.state.appList.map(app => (
+            <Link key={app.appId} appItem={app}/>
+        ))
+        let running = this.props.runList;
         let runningWindow = running.map(app => (
-            <Window closeWindow={this.closeWindow.bind(this)} key={app.appId} appItem={app} />
+            <Window WillMaxCtrl={this.WillMaxCtrl.bind(this)} willMax={this.state.willMax} key={app.detail.appId} appItem={app}/>
         ))
         let runningFooter = running.map(app => (
-            <FooterIcon key={app.appId} appItem={app}  />
+            <FooterIcon key={app.detail.appId} appItem={app}/>
         ))
         return (
-            <div className="main" style={{backgroundImage: 'url('+ bg +')'}} id="main">
-                {/*图标*/}
-                <div className="mydiv">
-                    <div className="windows">
-                        <ul>
-                            {links}
-                        </ul>
+                <div className={style.main}>
+                    {/*图标*/}
+                    <div className={style.mydiv}>
+                        <MenuArea menu={this.menu}>
+                            <div className={style.windows}>
+                                <ul>
+                                    {links}
+                                </ul>
+                            </div>
+                        </MenuArea>
                     </div>
-                </div>
-                {/*应用窗口*/}
-                <div className="app-ceng">
-                    <div className="app-list">
-                        {runningWindow}
+                    {/*应用窗口*/}
+                    <div className={style['app-ceng']}>
+                        <div className={style['app-list']}>
+                            {this.state.willMax ? <div className={style.premax}></div> : ""}
+                            {runningWindow}
+                        </div>
                     </div>
-                </div>
-                {/*底部栏*/}
-                <div className="win-down">
-                    <div className="win-down-bg"></div>
-                    <i></i>
-                    <div className="win-down-body">
-                        <div className="win-datetime">
-                            <p>
-
-                            </p>
-                            <p>
-
-                            </p>
-                        </div>
-                        <div className="win-task">
-                            {runningFooter}
-                        </div>
-                        <div className="win-start">
-                            <div className="win-start-icon">
-                                <i></i>
-                                <i></i>
-                                <i></i>
-                                <i></i>
+                    {/*底部栏*/}
+                    <div className={style['win-down']}>
+                        <div className={style['win-down-bg']} style={{backgroundImage: `url(${bg})`}}></div>
+                        <i></i>
+                        <div className={style['win-down-body']}>
+                            <Datetime/>
+                            <div className={style['win-task']}>
+                                {runningFooter}
+                            </div>
+                            <div className={style['win-start']}>
+                                <div className={style['win-start-icon']}>
+                                    <i></i>
+                                    <i></i>
+                                    <i></i>
+                                    <i></i>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    <Menu />
+                    {/*欢迎页*/}
+                    {this.state.loginRemoved ? null : <Login removeLogin={this.removeLogin.bind(this)} />}
                 </div>
-            </div>
         )
     }
 }
+
+
+export default connect(
+    state => {
+        return {
+            runList: state.runList
+        }
+    },null)(Index)

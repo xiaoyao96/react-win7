@@ -1,23 +1,48 @@
-* {
+:global(*) {
   -webkit-tap-highlight-color: transparent;
-  font-family: "黑体";
+  font-family: "微软雅黑";
   user-select: none;
 }
 
-a,
-a:visited {
+:global(a),
+:global(a):visited {
   text-decoration: none;
 }
-ul {
+:global(ul) {
   margin: 0;
   padding: 0;
   list-style: none;
 }
-html,
-body,
-#root {
+:global(html),
+:global(body),
+:global(#root) {
   width: 100%;
   height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: visible;
+}
+:global(#root):before{
+  content: '';
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  display: block;
+  left: 0;
+  top: 0;
+  background: url("../imgs/img0.jpg") #f5f5f5 no-repeat center;
+  background-attachment: fixed;
+}
+:global(bottom){
+  outline: none;
+}
+*{margin: 0;padding: 0;list-style: none;}
+
+:global(body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, /* structural elements 结构元素 */
+dl, dt, dd, ul, ol, li, /* list elements 列表元素 */
+pre, /* text formatting elements 文本格式元素 */
+form, fieldset, legend, button, input, textarea, /* form elements 表单元素 */
+th, td) /* table elements 表格元素 */ {
   margin: 0;
   padding: 0;
 }
