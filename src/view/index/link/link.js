@@ -34,7 +34,7 @@ class Window extends React.Component {
             iconEle = <div className={classnames({[this.props.appItem.img]: true, iconfont: true})}></div>
         }
         return (
-            <li onTouchEnd={this.openWindow} onKeyDown={this.checkFocus} onDoubleClick={this.props.openWindow} className={style.link}>
+            <li onTouchEnd={this.props.openWindow} onKeyDown={this.checkFocus} onDoubleClick={this.props.openWindow} className={style.link}>
                 <MenuArea menu={this.menu}>
                     <a href="javascript:void(0);" app-id={this.props.appItem.appId}>
                         {iconEle}
