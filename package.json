@@ -32,6 +32,7 @@
     "fs-extra": "7.0.0",
     "html-webpack-plugin": "4.0.0-alpha.2",
     "identity-obj-proxy": "3.0.0",
+    "immutable": "^4.0.0-rc.12",
     "jest": "23.6.0",
     "jest-pnp-resolver": "1.0.1",
     "jest-resolve": "23.6.0",
@@ -48,7 +49,10 @@
     "react-dev-utils": "^6.0.5",
     "react-dom": "^16.6.0",
     "react-hammerjs": "^1.0.1",
+    "react-redux": "^5.1.1",
     "react-router-dom": "^4.3.1",
+    "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0",
     "resolve": "1.8.1",
     "sass-loader": "7.1.0",
     "style-loader": "0.23.0",
@@ -113,5 +117,8 @@
     "presets": [
       "react-app"
     ]
+  },
+  "devDependencies": {
+    "yarn": "^1.12.3"
   }
 }

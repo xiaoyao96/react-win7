@@ -1,59 +1,44 @@
 import React from 'react';
 import style from './menu.scss'
 import classnames from 'classnames'
-export default class Menu extends React.Component{
+import { connect } from 'react-redux'
+import { showMenu, hideMenu, setMenuDom } from "../../store/actions/menuActions";
+
+class Menu extends React.Component{
     constructor(props){
         super(props);
-        this.state = {
-            show: false,
-            x: 0,
-            y: 0,
-            menu: []
-        }
         this.click = this.click.bind(this);
         this.getMenuDom = this.getMenuDom.bind(this);
-        window.getMenu = function () {
-            return this;
-        }.bind(this)
+        window.addEventListener('mousedown', () => {
+            this.hide();
+        })
     }
+
     static stop(e){
         e.stopPropagation()
     }
     click(m){
         m.click()
-        this.setState({
-            show: false
-        })
+        this.props.hideMenu()
     }
     //隐藏
     hide(){
-        this.setState({
-            show: false
-        })
+        this.props.hideMenu()
     }
-    //显示
-    show(){
-        this.setState({
-            show: true
-        }, _ => {
-            if(this.menuDom.offsetHeight + this.state.y > document.documentElement.offsetHeight){
-                this.setState({
-                    y: this.state.y - this.menuDom.offsetHeight
-                })
-            }
-        })
-    }
+
     getMenuDom(dom){
-        console.log(dom)
-        this.menuDom = dom;
+        this.props.setMenuDom(dom)
+        setTimeout(_ => {
+            console.log(this.props.menu.dom)
+        }, 1000)
     }
     render(){
-        let menus = (this.state.menu || []).map((m,i) => (
-            <div key={i} onMouseUp={ m.disabled ? _ => 0 : (ev) => { this.click(m) }} className={classnames({[style['menu-item']]: true, [style.disabled]: m.disabled})}>{m.value}</div>
+        let menus = (this.props.menu.list || []).map((m,i) => (
+            <div key={i} onMouseUp={ (m.disabled || typeof m.click !== 'function') ? _ => 0 : (ev) => { this.click(m) }} className={classnames({[style['menu-item']]: true, [style.disabled]: m.disabled})}>{m.value}</div>
         ));
         return (
             <div className={style.menu}>
-                <div ref={this.getMenuDom} onMouseDown={Menu.stop} onMouseUp={Menu.stop} style={{display: this.state.show ? "block": "none", left: this.state.x + 'px', top: this.state.y + 'px'}} className={style['mydiv_body']}>
+                <div ref={this.getMenuDom} onMouseDown={Menu.stop} onMouseUp={Menu.stop} style={{visibility: this.props.menu.show ? "visible": "hidden", left: this.props.menu.x + 'px', top: this.props.menu.y + 'px'}} className={style['mydiv_body']}>
                     <span className={style.shu}></span>
                     {menus}
                 </div>
@@ -61,3 +46,21 @@ export default class Menu extends React.Component{
         )
     }
 }
+
+export default connect(
+    state => {
+        return{
+            menu: state.menu
+        }
+    },
+    dispatch => {
+        return {
+            setMenuDom(dom){
+                dispatch(setMenuDom(dom));
+            },
+            hideMenu(){
+                dispatch(hideMenu())
+            }
+        }
+    }
+)(Menu)

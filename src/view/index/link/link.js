@@ -2,26 +2,23 @@ import React from 'react'
 import style from './link.scss'
 import classnames from 'classnames'
 import MenuArea from '../../../components/menuArea/menuArea'
+import { connect } from 'react-redux'
+import { openApp } from "../../../store/actions/appActions";
 
-export default class Window extends React.Component {
+class Window extends React.Component {
     constructor(props){
         super(props);
-        this.openWindow = this.openWindow.bind(this);
-        this.checkFocus = this.checkFocus.bind(this)
-    }
-    openWindow(){
-        this.props.openWindow(this.props.appItem.appId);
     }
     checkFocus(e){
         if(e.code === 'Enter' || e.which === 13 || e.keyCode === 13){
-            this.openWindow()
+            this.props.openWindow()
         }
     }
     render() {
         this.menu = [
             {
                 value: "打开",
-                click: this.openWindow
+                click: this.props.openWindow
             },
             {
                 value: '删除',
@@ -37,7 +34,7 @@ export default class Window extends React.Component {
             iconEle = <div className={classnames({[this.props.appItem.img]: true, iconfont: true})}></div>
         }
         return (
-            <li onTouchEnd={this.openWindow} onKeyDown={this.checkFocus} onDoubleClick={this.openWindow} className={style.link}>
+            <li onTouchEnd={this.props.openWindow} onKeyDown={this.checkFocus} onDoubleClick={this.props.openWindow} className={style.link}>
                 <MenuArea menu={this.menu}>
                     <a href="javascript:void(0);" app-id={this.props.appItem.appId}>
                         {iconEle}
@@ -49,3 +46,14 @@ export default class Window extends React.Component {
         )
     }
 }
+
+export default connect(
+    null,
+    (dispatch, props) => {
+        return {
+            openWindow(){
+                dispatch(openApp(props.appItem.appId))
+            }
+        }
+    }
+)(Window)
