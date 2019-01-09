@@ -28,9 +28,6 @@ class Menu extends React.Component{
 
     getMenuDom(dom){
         this.props.setMenuDom(dom)
-        setTimeout(_ => {
-            console.log(this.props.menu.dom)
-        }, 1000)
     }
     render(){
         let menus = (this.props.menu.list || []).map((m,i) => (
