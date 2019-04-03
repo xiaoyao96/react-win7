@@ -10,6 +10,7 @@ import Menu from '../../components/menu/menu'
 import MenuArea from '../../components/menuArea/menuArea'
 import appList from '../../public/appList.js'
 import { connect } from 'react-redux'
+import querystring from 'querystring';
 
 class Index extends React.Component {
     constructor(props) {
@@ -20,11 +21,17 @@ class Index extends React.Component {
             runList: []
         }
     }
+    componentDidMount(){
+        let query = querystring.parse(this.props.location.search.split('?').pop());
+        this.Ajax('/visited', 'post', {
+            from: query.from
+        })
+    }
     removeLogin(){
 
     }
     saveComponent(){
-
+        
     }
     WillMaxCtrl(result){
         this.setState({

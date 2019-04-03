@@ -14,9 +14,8 @@ export default class Login extends React.Component{
     }
     barLoad(){
         if(this.state.num < 100){
-            this.state.num++;
             this.setState({
-                num: this.state.num
+                num: this.state.num + 1
             }, _ => {
                 setTimeout(this.barLoad,10)
             })
