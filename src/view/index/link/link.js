@@ -8,14 +8,13 @@ import { openApp } from "../../../store/actions/appActions";
 class Window extends React.Component {
     constructor(props){
         super(props);
-    }
-    checkFocus(e){
-        if(e.code === 'Enter' || e.which === 13 || e.keyCode === 13){
-            this.props.openWindow()
+        this.iconEle = <div style={{backgroundImage: 'url(' + this.props.appItem.img + ')'}}></div>;
+        if(this.props.appItem.imgType === 'font'){
+            this.iconEle = <div className={classnames({[this.props.appItem.img]: true, iconfont: true})}></div>
         }
     }
-    render() {
-        this.menu = [
+    state = {
+        menu: [
             {
                 value: "打开",
                 click: this.props.openWindow
@@ -29,17 +28,20 @@ class Window extends React.Component {
                 disabled: true
             }
         ]
-        let iconEle = <div style={{backgroundImage: 'url(' + this.props.appItem.img + ')'}}></div>;
-        if(this.props.appItem.imgType === 'font'){
-            iconEle = <div className={classnames({[this.props.appItem.img]: true, iconfont: true})}></div>
+    }
+    checkFocus = e => {
+        if(e.code === 'Enter' || e.which === 13 || e.keyCode === 13){
+            this.props.openWindow()
         }
+    }
+    render() {
         return (
             <li onTouchEnd={this.props.openWindow} onKeyDown={this.checkFocus} onDoubleClick={this.props.openWindow} className={style.link}>
-                <MenuArea menu={this.menu}>
-                    <a href="javascript:void(0);" app-id={this.props.appItem.appId}>
-                        {iconEle}
+                <MenuArea menu={this.state.menu}>
+                    <button app-id={this.props.appItem.appId}>
+                        {this.iconEle}
                         <p>{this.props.appItem.name}</p>
-                    </a>
+                    </button>
                 </MenuArea>
 
             </li>

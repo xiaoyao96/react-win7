@@ -2,27 +2,20 @@ import React from 'react'
 import style from './html.scss'
 import classnames from 'classnames'
 export default class Html extends React.Component{
-    constructor(props){
-        super(props);
-        this.loadFinish = this.loadFinish.bind(this);
-        this.loadError = this.loadError.bind(this);
-        this.state = {
-            loading: true,
-            err: false
-        }
+    state = {
+        loading: true,
+        err: false
     }
-    loadFinish(){
+    loadFinish = () => {
         this.setState({
             loading: false
         })
     }
-    loadError(){
+    loadError = () => {
         this.setState({
             loading: false,
             err: true
         })
-    }
-    componentDidMount(){
     }
 
     render(){
@@ -37,7 +30,7 @@ export default class Html extends React.Component{
         return (
             <div className={style["ifr-box"]}>
                 <div style={s} className={style["ifr-scroll"]}>
-                    <iframe style={{height: isPc ? 0 : "100000px"}} ref="ifr" onError={this.loadError} onLoad={this.loadFinish} className={style.body}
+                    <iframe title="window" style={{height: isPc ? "auto" : "100000px"}} ref="ifr" onError={this.loadError} onLoad={this.loadFinish} className={style.body}
                             scrolling="auto" frameBorder="0" src={this.props.url}>
                     </iframe>
                 </div>

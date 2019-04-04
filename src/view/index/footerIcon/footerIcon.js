@@ -6,26 +6,19 @@ import  { connect } from 'react-redux'
 import { closeApp, showApp, hideApp, maxApp, cancelMaxApp} from "../../../store/actions/appActions";
 
 class FooterIcon extends React.Component {
-    constructor(props){
-        super(props);
-        this.footerIconClick = this.footerIconClick.bind(this);
-        this.iconMousedown = this.iconMousedown.bind(this);
-        this.iconMouseup = this.iconMouseup.bind(this)
-        this.state = {
-            active: false
-        }
-
+    state = {
+        active: false
     }
-    footerIconClick(){
+    footerIconClick = () => {
         this.props.toggleWindow()
     }
-    iconMousedown(){
+    iconMousedown = () => {
         this.setState({
             active: true
         })
         document.addEventListener('mouseup', this.iconMouseup)
     }
-    iconMouseup(){
+    iconMouseup = () => {
         this.setState({
             active: false
         })

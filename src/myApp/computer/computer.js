@@ -2,13 +2,10 @@ import React from 'react'
 import style from './computer.scss'
 
 export default class Computer extends React.Component{
-    constructor(props){
-        super(props);
-        this.state = {
-            num: 0
-        }
+    state = {
+        num: 0
     }
-    componentWillMount(){
+    componentDidMount(){
         this.Ajax('/visited', 'get').then(res => {
             if(res.code == 0){
                 this.setState({

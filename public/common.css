@@ -1,7 +1,9 @@
-/** 重置列表元素 **/
-ul, ol { list-style: none; }
 
 /** 重置文本格式元素 **/
+body{
+  margin: 0;
+  padding: 0
+}
 a { text-decoration: none; }
 a:hover { text-decoration: none; }
 botton, botton:active, button:focus{

@@ -2,31 +2,27 @@ import React from 'react';
 import style from './menu.scss'
 import classnames from 'classnames'
 import { connect } from 'react-redux'
-import { showMenu, hideMenu, setMenuDom } from "../../store/actions/menuActions";
+import { hideMenu, setMenuDom } from "../../store/actions/menuActions";
 
 class Menu extends React.Component{
-    constructor(props){
-        super(props);
-        this.click = this.click.bind(this);
-        this.getMenuDom = this.getMenuDom.bind(this);
+    componentDidMount(){
         window.addEventListener('mousedown', () => {
             this.hide();
         })
     }
-
     static stop(e){
         e.stopPropagation()
     }
-    click(m){
+    click = (m) => {
         m.click()
         this.props.hideMenu()
     }
     //隐藏
-    hide(){
+    hide = () => {
         this.props.hideMenu()
     }
 
-    getMenuDom(dom){
+    getMenuDom = (dom) => {
         this.props.setMenuDom(dom)
     }
     render(){

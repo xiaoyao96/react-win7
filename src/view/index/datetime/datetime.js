@@ -1,11 +1,10 @@
 import React from 'react'
 import style from './datetime.scss'
 export default class Datetime extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            date: new Date()
-        }
+    state = {
+        date: new Date()
+    }
+    componentDidMount(){
         setInterval(_ => {
             this.setState({
                 date: new Date()

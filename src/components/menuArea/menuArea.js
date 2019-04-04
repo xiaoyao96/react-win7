@@ -4,11 +4,7 @@ import { connect } from 'react-redux'
 import { showMenu, setPosition } from "../../store/actions/menuActions";
 
 class MenuArea extends React.Component{
-    constructor(props){
-        super(props);
-        this.show = this.show.bind(this);
-    }
-    show(e){
+    show = (e) => {
         if(e.button === 2){
             let y = e.pageY;
             let x = e.pageX;

@@ -11,7 +11,6 @@
 :global(ul) {
   margin: 0;
   padding: 0;
-  list-style: none;
 }
 :global(html),
 :global(body),
@@ -36,7 +35,6 @@
 :global(bottom){
   outline: none;
 }
-*{margin: 0;padding: 0;list-style: none;}
 
 :global(body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, /* structural elements 结构元素 */
 dl, dt, dd, ul, ol, li, /* list elements 列表元素 */

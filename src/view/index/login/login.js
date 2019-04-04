@@ -2,17 +2,13 @@ import React from 'react';
 import style from './login.scss';
 import classnames from 'classnames';
 export default class Login extends React.Component{
-    constructor(props){
-        super(props);
-        this.barLoad = this.barLoad.bind(this)
-        this.state = {
-            num: 0
-        }
+    state = {
+        num: 0
     }
     componentDidMount(){
         this.barLoad();
     }
-    barLoad(){
+    barLoad = () => {
         if(this.state.num < 100){
             this.setState({
                 num: this.state.num + 1
@@ -24,9 +20,9 @@ export default class Login extends React.Component{
                 this.setState({
                     hide: true
                 });
-                setTimeout(_ => {
-                    this.props.removeLogin();
-                }, 1000)
+                // setTimeout(_ => {
+                //     this.props.removeLogin();
+                // }, 1000)
             }, 1000)
         }
     }

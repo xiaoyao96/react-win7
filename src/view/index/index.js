@@ -13,25 +13,16 @@ import { connect } from 'react-redux'
 import querystring from 'querystring';
 
 class Index extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            appList,
-            willMax: false,
-            runList: []
-        }
+    state = {
+        appList,
+        willMax: false,
+        runList: []
     }
     componentDidMount(){
         let query = querystring.parse(this.props.location.search.split('?').pop());
         this.Ajax('/visited', 'post', {
             from: query.from
         })
-    }
-    removeLogin(){
-
-    }
-    saveComponent(){
-        
     }
     WillMaxCtrl(result){
         this.setState({
@@ -112,7 +103,7 @@ class Index extends React.Component {
                     </div>
                     <Menu />
                     {/*欢迎页*/}
-                    {this.state.loginRemoved ? null : <Login removeLogin={this.removeLogin.bind(this)} />}
+                    <Login />
                 </div>
         )
     }
