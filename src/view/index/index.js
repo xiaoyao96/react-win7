@@ -11,7 +11,7 @@ import MenuArea from '../../components/menuArea/menuArea'
 import appList from '../../public/appList.js'
 import { connect } from 'react-redux'
 import querystring from 'querystring';
-
+console.log(1)
 class Index extends React.Component {
     state = {
         appList,
@@ -19,7 +19,7 @@ class Index extends React.Component {
         runList: []
     }
     componentDidMount(){
-        let query = querystring.parse(this.props.location.search.split('?').pop());
+        let query = querystring.parse(window.location.hash.split('?').pop());
         this.Ajax('/visited', 'post', {
             from: query.from
         })

@@ -2,8 +2,8 @@ import * as React from 'react';
 
 import loadable from '@loadable/component';
 
-export default (name, data) => {
-    const AsyncPage = loadable(() => import(`../myApp/${name}`));
+export default (com, data) => {
+    const AsyncPage = loadable(com);
 
     return class extends React.Component {
         render() {

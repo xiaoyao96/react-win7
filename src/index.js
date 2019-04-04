@@ -8,7 +8,6 @@ import Ajax from './public/request';
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
 import reducer from './store/index'
-import { fromJS } from 'immutable'
 let store = createStore(reducer)
 //全屏
 Object.defineProperty(React.Component.prototype, 'requestFullScreen', {
