@@ -34,7 +34,7 @@ const Applist = [
         "appId":Math.random().toString(),
         "name": "wxMiniStore",
         "type" : "html",
-        "url": "/ministore",
+        "url": "#/ministore",
         "img" : github
     },
     {
