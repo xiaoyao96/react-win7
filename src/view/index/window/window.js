@@ -73,6 +73,7 @@ class Window extends React.Component {
             this.customState.startY = this.state.position.y;
             window.addEventListener('mousemove', this.windowMoving);
             window.addEventListener('mouseup', this.windowEndMove);
+            this.props.changeMovingState(true);
         }
     }
 

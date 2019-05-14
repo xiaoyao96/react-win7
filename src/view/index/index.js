@@ -11,7 +11,7 @@ import MenuArea from '../../components/menuArea/menuArea'
 import appList from '../../public/appList.js'
 import { connect } from 'react-redux'
 import querystring from 'querystring';
-console.log(1)
+
 class Index extends React.Component {
     state = {
         appList,
@@ -24,7 +24,7 @@ class Index extends React.Component {
             from: query.from
         })
     }
-    WillMaxCtrl(result){
+    WillMaxCtrl = (result) => {
         this.setState({
             willMax: result
         })
@@ -58,7 +58,7 @@ class Index extends React.Component {
         ))
         let running = this.props.runList;
         let runningWindow = running.map(app => (
-            <Window WillMaxCtrl={this.WillMaxCtrl.bind(this)} willMax={this.state.willMax} key={app.detail.appId} appItem={app}/>
+            <Window WillMaxCtrl={this.WillMaxCtrl} willMax={this.state.willMax} key={app.detail.appId} appItem={app}/>
         ))
         let runningFooter = running.map(app => (
             <FooterIcon key={app.detail.appId} appItem={app}/>
