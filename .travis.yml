@@ -1,10 +1,12 @@
 language: node_js
 node_js: stable
-install: true
-script: 
-  - npm ci
+before_install:
+  - composer config --global github-oauth.github.com "$GITHUB_TOKEN"
+install: 
+  - npm install
+script:
   - npm run build
-  - cp -r ./build/*
+  - cp -r ./build
 deploy:
   provider: pages
   skip_cleanup: true
