@@ -2,7 +2,7 @@
   "name": "react-win7",
   "version": "0.1.0",
   "private": true,
-  "homepage": "/react-win7-build",
+  "homepage": ".",
   "dependencies": {
     "@babel/core": "7.1.0",
     "@loadable/component": "^5.7.0",
