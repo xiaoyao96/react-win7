@@ -1,9 +1,9 @@
 language: node_js
 node_js: stable
 install:
-  - yarn
+  - npm
 script: 
-  - yarn run build
+  - npm run build
   - cp -r ./build/*
 deploy:
   provider: pages
