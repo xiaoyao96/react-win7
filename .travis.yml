@@ -1,5 +1,5 @@
 language: node_js
-node_js: 10
+node_js: stable
 before_install:
   - composer config --global github-oauth.github.com $GITHUB_TOKEN
 cache:
