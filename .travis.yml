@@ -2,7 +2,11 @@ language: node_js
 node_js: stable
 before_install:
   - composer config --global github-oauth.github.com $GITHUB_TOKEN
-install: true
+cache:
+  directories:
+    - node_modules
+install: 
+  - yarn install
 script:
   - npm run build
   - cp -r ./build
