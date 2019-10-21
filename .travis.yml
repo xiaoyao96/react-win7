@@ -1,8 +1,7 @@
 language: node_js
 node_js: stable
-install:
-  - npm
 script: 
+  - npm ci
   - npm run build
   - cp -r ./build/*
 deploy:
