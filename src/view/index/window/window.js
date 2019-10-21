@@ -66,7 +66,7 @@ class Window extends React.Component {
 
     // 开始移动
     windowStartMove = (e) => {
-        if (e.button == 0) {
+        if (e.button === 0) {
             this.customState.originX = e.pageX;
             this.customState.originY = e.pageY;
             this.customState.startX = this.state.position.x;

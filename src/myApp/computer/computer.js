@@ -7,7 +7,7 @@ export default class Computer extends React.Component{
     }
     componentDidMount(){
         this.Ajax('/visited', 'get').then(res => {
-            if(res.code == 0){
+            if(res.code === 0){
                 this.setState({
                     num: res.data
                 })

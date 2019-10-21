@@ -8,7 +8,7 @@ cache:
 install: 
   - yarn install
 script:
-  - npm run build
+  - yarn run build
   - cp -r ./build
 deploy:
   provider: pages
